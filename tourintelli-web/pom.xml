@@ -10,7 +10,7 @@
 	<properties>
 		<outputfilename>${project.version}.jar</outputfilename>
 	</properties>
-	
+
 	<build>
 		<resources>
 			<resource>
@@ -23,33 +23,33 @@
 		</resources>
 
 		<plugins>
-		<!--This plugin's configuration is used to store Eclipse m2e settings   
-                    only. It has no influence on the Maven build itself. -->  
-                <plugin>  
-                    <groupId>org.eclipse.m2e</groupId>  
-                    <artifactId>lifecycle-mapping</artifactId>  
-                    <version>1.0.0</version>  
-                    <configuration>  
-                        <lifecycleMappingMetadata>  
-                            <pluginExecutions>  
-                                <pluginExecution>  
-                                    <pluginExecutionFilter>  
-                                        <groupId>org.codehaus.mojo</groupId>  
-                                        <artifactId>aspectj-maven-plugin</artifactId>  
-                                        <versionRange>[1.0,)</versionRange>  
-                                        <goals>  
-                                            <goal>test-compile</goal>  
-                                            <goal>compile</goal>  
-                                        </goals>  
-                                    </pluginExecutionFilter>  
-                                    <action>  
-                                        <execute />  
-                                    </action>  
-                                </pluginExecution>  
-                            </pluginExecutions>  
-                        </lifecycleMappingMetadata>  
-                    </configuration>  
-                </plugin>  
+		<!--This plugin's configuration is used to store Eclipse m2e settings
+                    only. It has no influence on the Maven build itself. -->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.codehaus.mojo</groupId>
+                                        <artifactId>aspectj-maven-plugin</artifactId>
+                                        <versionRange>[1.0,)</versionRange>
+                                        <goals>
+                                            <goal>test-compile</goal>
+                                            <goal>compile</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <execute />
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -57,6 +57,11 @@
 				<configuration>
 					<useSystemClassLoader>true</useSystemClassLoader>
 				</configuration>
+			</plugin>
+            <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.1</version>
                 <executions>
                     <execution>
                         <id>copy-dependencies</id>
@@ -65,9 +70,19 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                        <outputDirectory>$(basedir)/src/main/webapp/WEB-INF/lib</outputDirectory>
+                        <outputDirectory>${basedir}/src/main/webapp/WEB-INF/lib</outputDirectory>
                         </configuration>
                     </execution>
+                    <!--<execution>
+                        <id>copy</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                        <outputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</outputDirectory>
+                        </configuration>
+                    </execution>-->
                 </executions>
 			</plugin>
 		</plugins>
